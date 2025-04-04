@@ -7,13 +7,16 @@ interface SingleArticlePageProps {
 
 const SingleArticlePage = async ({ params }: SingleArticlePageProps) => {
   const id = params.id;
+
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`
   );
+
   const article: Article = await response.json();
   if (!response.ok) {
     throw new Error("Failed to fetch article");
   }
+
   return (
     <section className="fix-height container m-auto w-full px-5 pt-8 md:w-3/4">
       <div className="bg-white p-7 rounded-lg">

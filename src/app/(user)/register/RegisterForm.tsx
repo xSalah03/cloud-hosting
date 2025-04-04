@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const LoginForm = () => {
+const RegisterForm = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const formSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === "" || password === "") {
+    if (username === "" || email === "" || password === "") {
       toast.error("Please fill in all fields");
     }
-    console.log("Form submitted", { email, password });
+    console.log("Form submitted", { username, email, password });
   };
 
   return (
     <form onSubmit={formSubmitHandler} className="flex flex-col" action="">
+      <input
+        className="mb-4 border rounded p-2 text-xl"
+        type="username"
+        placeholder="Enter Your Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
       <input
         className="mb-4 border rounded p-2 text-xl"
         type="email"
@@ -33,10 +41,10 @@ const LoginForm = () => {
         className="text-2xl text-white bg-blue-800 p-2 rounded-lg font-bold"
         type="submit"
       >
-        Login
+        Register
       </button>
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
