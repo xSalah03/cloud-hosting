@@ -1,4 +1,6 @@
 import ArticleItem from "@/components/articles/ArticleItem";
+import Pagination from "@/components/articles/Pagination";
+import SearchArticleInput from "@/components/articles/SearchArticleInput";
 import { Article } from "@/utils/types";
 
 const ArticlesPage = async () => {
@@ -14,11 +16,13 @@ const ArticlesPage = async () => {
 
   return (
     <section className="container m-auto px-5">
+      <SearchArticleInput />
       <div className="flex items-center justify-center flex-wrap gap-7">
-        {articles.map((item) => (
+        {articles.slice(0, 9).map((item) => (
           <ArticleItem article={item} key={item.id} />
         ))}
       </div>
+      <Pagination />
     </section>
   );
 };

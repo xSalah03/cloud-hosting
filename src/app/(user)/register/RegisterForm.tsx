@@ -8,10 +8,10 @@ const RegisterForm = () => {
 
   const formSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "" || email === "" || password === "") {
-      toast.error("Please fill in all fields");
-    }
-    console.log("Form submitted", { username, email, password });
+    if (username === "") return toast.error("Please enter your username");
+    if (email === "") return toast.error("Please enter your email");
+    if (password === "") return toast.error("Please enter your password");
+    console.log({ username, email, password });
   };
 
   return (
